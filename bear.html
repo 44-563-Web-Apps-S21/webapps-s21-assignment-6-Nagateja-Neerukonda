@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Build Bear</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+
+        #Startresult {
+            font-weight: bold;
+            color: rgb(228, 64, 91);
+        }
+
+        #result {
+            font-weight: bold;
+            color: rgb(228, 64, 91);
+        }
+        
+
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container jumbotron">
+        <h1 class="text-center" style="color:red">Naga Teja builds a bear</h1>
+    </div>
+    <div class="container">
+        <div class="col-sm-4">
+            <div>
+                <form class="p-4">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="hat" name="bear" value="hat">
+                        <label for="hat">Hat</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="scarf" name="bear" value="scarf">
+                        <label for="scarf">Scarf</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="shirt" name="bear" value="shirt">
+                        <label for="shirt">Shirt</label>
+                    </div></br>
+                    <div>
+                        <input type="button" class="btn btn-secondary" onclick="startbear()"
+                            value="Start a bear">
+                    </div>
+                </form>
+            </div>
+            <div>
+                <p id="Startresult">Bear objects shows here</p>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4 mt-5">
+            <div>
+                <form>
+                    <div class="form-group">
+                        <label for="form1_color" style="color: red;text-align: center;">Enter a property</label>
+                        <input type="text" id="form1_color" name="form1_color" value="color" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form1_value">Enter a value </label>
+                        <input type="text" id="form1_value" name="form1_value" class="form-control">
+                    </div>
+
+                    <input type="button" class="btn btn-info" onclick="updatebear()" value="Update the bear">
+                </form>
+            </div>
+            <div>
+                <p id="result">Update bear Object will show here </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var my_bear = {};
+        function updatebear() {
+            color = document.getElementById("form1_color").value
+            val = document.getElementById("form1_value").value
+            my_bear[color] = val;
+            document.getElementById('result').innerHTML = JSON.stringify(my_bear);
+
+        }
+    
+
+        var my_bear = {}
+        function startbear() {
+            if (document.getElementById("hat").checked) {
+                my_bear["hat"] = true;
+            } else {
+                my_bear["hat"] = false;
+            }
+            if (document.getElementById("scarf").checked) {
+                my_bear["scarf"] = true;
+            } else {
+                my_bear["scarf"] = false;
+            }
+            if (document.getElementById("shirt").checked) {
+                my_bear["shirt"] = true;
+            } else {
+                my_bear["shirt"] = false;
+            }
+            out = document.getElementById("Startresult")
+            my_bear = JSON.stringify(my_bear)
+            out.innerHTML = my_bear
+            my_bear = JSON.parse(my_bear)
+        }
+    </script>
+
+
+</body>
+
+</html>
